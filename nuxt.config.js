@@ -76,5 +76,6 @@ export default {
   build: {},
   router: {
     base: '/',
+    middleware: 'favorites',
   },
 }
