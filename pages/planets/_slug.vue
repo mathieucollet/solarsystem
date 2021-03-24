@@ -121,12 +121,19 @@
             <v-card-title v-if="planet.moons">Lunes</v-card-title>
 
             <v-card-text v-if="planet.moons">
-              <v-sheet elevation="1" class="pa-1">
-                <v-chip-group mandatory>
-                  <v-chip v-for="moon in planet.moons" :key="moon.rel">{{
-                    moon.moon
-                  }}</v-chip>
-                </v-chip-group>
+              <v-sheet elevation="1" class="py-2">
+                <v-slide-group show-arrows>
+                  <v-slide-item v-for="moon in planet.moons" :key="moon.moon">
+                    <v-btn
+                      class="mx-2"
+                      depressed
+                      rounded
+                      @click="moonGoTo(moon.rel)"
+                    >
+                      {{ moon.moon }}
+                    </v-btn>
+                  </v-slide-item>
+                </v-slide-group>
               </v-sheet>
             </v-card-text>
 
