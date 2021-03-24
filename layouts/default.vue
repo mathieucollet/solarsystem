@@ -1,6 +1,12 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer :mini-variant="miniVariant" fixed app permanent>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="variant"
+      :clipped="true"
+      fixed
+      app
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -18,11 +24,16 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar fixed app>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
+    <v-app-bar clipped-left fixed app>
+      <v-btn v-if="drawer" icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <v-app-bar-nav-icon
+        v-if="isMobile"
+        @click="drawer = !drawer"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -39,6 +50,7 @@
 export default {
   data() {
     return {
+      drawer: true,
       fixed: false,
       items: [
         {
@@ -52,11 +64,20 @@ export default {
           to: '/favorites',
         },
       ],
-      miniVariant: false,
+      miniVariant: true,
       right: true,
       rightDrawer: false,
-      title: 'MDS Project',
+      title: 'Système solaire',
     }
+  },
+  computed: {
+    isMobile() {
+      return ['xs', 'sm', 'md'].includes(this.$vuetify.breakpoint.name)
+    },
+    variant() {
+      if (this.isMobile) return false
+      return !this.isMobile && this.miniVariant
+    },
   },
 }
 </script>
