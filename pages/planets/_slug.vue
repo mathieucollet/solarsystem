@@ -138,6 +138,7 @@
             </v-card-text>
 
             <v-card-actions>
+              <v-spacer v-if="isMobile" />
               <v-btn color="deep-purple lighten-2" text @click="$router.go(-1)">
                 Retour
               </v-btn>
@@ -183,6 +184,9 @@ export default {
     ...mapState({
       planet: (state) => state.planets.planet,
     }),
+    isMobile() {
+      return ['xs', 'sm', 'md'].includes(this.$vuetify.breakpoint.name)
+    },
   },
   mounted() {
     this.isFav = this.$cookies.get('favorites').ids.includes(this.planet.id)
