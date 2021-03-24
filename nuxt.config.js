@@ -59,7 +59,7 @@ export default {
     },
     '/api/images': {
       target:
-        'https://api.qwant.com/api/search/images?count=1&t=images&safesearch=1&uiv=4&r=US&size=large&q=astronomical+',
+        'https://api.qwant.com/api/search/images?count=1&t=images&safesearch=1&uiv=4&r=US&size=large&q=astronomical+planet+',
       pathRewrite: { '^/api/images': '/' },
     },
   },
