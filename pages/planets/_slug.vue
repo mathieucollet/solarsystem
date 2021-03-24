@@ -19,6 +19,10 @@
               ></v-progress-circular>
             </v-row>
           </template>
+          <v-btn class="float-right" icon dark @click="addToFavorites">
+            <v-icon v-if="isFav"> mdi-heart </v-icon>
+            <v-icon v-else> mdi-heart-outline </v-icon>
+          </v-btn>
         </v-img>
 
         <v-card-title>
@@ -59,8 +63,8 @@
                 <v-icon>mdi-weight</v-icon>
               </v-list-item-icon>
               <v-list-item-subtitle>
-                {{ planet.mass.massValue }}
-                <sup>{{ planet.mass.massExponent }}</sup>
+                {{ planet.mass ? planet.mass.massValue : 0 }}
+                <sup>{{ planet.mass ? planet.mass.massExponent : 0 }}</sup>
                 kg
               </v-list-item-subtitle>
             </template>
@@ -131,22 +135,52 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Slug',
-  async asyncData({ params, $axios }) {
-    const planetResponse = await $axios.get('/api/planets/' + params.slug)
-    const planet = planetResponse.data
-    const imageResponse = await $axios.get('/api/images/' + planet.englishName)
+  async asyncData({ params, $axios, store }) {
+    await store.dispatch('planets/getPlanet', params.slug)
+    const imageResponse = await $axios.get('/api/images/' + params.slug)
     const image = decodeURIComponent(
       imageResponse.data.data.result.items[0].media_fullsize
         .split('?u=')[1]
         .split('&q=')[0]
     )
-    return { planet, image }
+    return { image }
+  },
+  data() {
+    return {
+      image: '',
+      isFav: false,
+    }
+  },
+  computed: {
+    ...mapState({
+      planet: (state) => state.planets.planet,
+    }),
+  },
+  mounted() {
+    this.isFav = this.$cookies.get('favorites').ids.includes(this.planet.id)
   },
   methods: {
     moonGoTo(rel) {
       this.$router.push('/planets/' + rel.split('bodies/')[1])
+    },
+    addToFavorites() {
+      const cookieRes = this.$cookies.get('favorites')
+      if (cookieRes.ids.includes(this.planet.id)) {
+        cookieRes.ids = cookieRes.ids.filter((id) => id !== this.planet.id)
+        this.isFav = false
+      } else {
+        cookieRes.ids = [...cookieRes.ids, this.planet.id]
+        this.isFav = true
+      }
+      this.$cookies.set('favorites', cookieRes)
+    },
+    isFavorite() {
+      const cookieRes = this.$cookies.get('favorites')
+      return cookieRes.ids.includes(this.planet.id)
     },
   },
 }

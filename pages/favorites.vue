@@ -10,11 +10,11 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'Planets',
+  name: 'Favorites',
   async fetch() {
     const { store, error } = this.$nuxt.context
     try {
-      await store.dispatch('planets/getPlanets')
+      await store.dispatch('planets/getFavorites')
     } catch (e) {
       error({
         statusCode: 503,
@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState({
-      planets: (state) => state.planets.planets,
+      planets: (state) => state.planets.favorites,
     }),
   },
 }

@@ -42,6 +42,8 @@ export default {
     '@nuxtjs/axios',
     // https://github.com/nuxt-community/proxy-module
     '@nuxtjs/proxy',
+    // https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt
+    'cookie-universal-nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

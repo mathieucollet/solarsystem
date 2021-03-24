@@ -1,12 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      :mini-variant="miniVariant"
-      :clipped="true"
-      fixed
-      app
-      permanent
-    >
+    <v-navigation-drawer :mini-variant="miniVariant" fixed app permanent>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -24,7 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="true" fixed app>
+    <v-app-bar fixed app>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
@@ -51,6 +45,11 @@ export default {
           icon: 'mdi-earth',
           title: 'Planètes',
           to: '/',
+        },
+        {
+          icon: 'mdi-heart',
+          title: 'Favoris',
+          to: '/favorites',
         },
       ],
       miniVariant: false,

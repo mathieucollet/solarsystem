@@ -6,6 +6,8 @@
     :search="search"
     class="elevation-2"
     multi-sort
+    :loading="loading"
+    loading-text="Alignement des planètes ..."
     @click:row="rowGoTo"
   >
     <template #top>
@@ -62,6 +64,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    loading: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -114,6 +120,12 @@ export default {
             if (!this.density) return true
             return value >= parseFloat(this.density)
           },
+        },
+        {
+          text: 'Actions',
+          value: 'actions',
+          sortable: false,
+          align: 'end',
         },
       ],
     }
