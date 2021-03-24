@@ -22,31 +22,31 @@
       <v-icon v-else large color="grey lighten-2"> mdi-cancel </v-icon>
     </template>
     <template #body.append>
-      <tr>
-        <td></td>
+      <tr :class="{ 'v-data-table__mobile-table-row': isMobile }">
+        <td v-if="!isMobile"></td>
         <td>
           <v-select v-model="isPlanet" :items="isPlanetOptions"></v-select>
         </td>
-        <td></td>
+        <td v-if="!isMobile"></td>
         <td>
           <v-text-field
             v-model="moons"
             type="number"
-            label="Plus que"
+            label="Lunes"
           ></v-text-field>
         </td>
         <td>
           <v-text-field
             v-model="gravity"
             type="number"
-            label="Plus que"
+            label="Gravité"
           ></v-text-field>
         </td>
         <td>
           <v-text-field
             v-model="density"
             type="number"
-            label="Plus que"
+            label="Densité"
           ></v-text-field>
         </td>
       </tr>
@@ -82,7 +82,6 @@ export default {
             if (this.isPlanet === 'Planètes') return value
             if (this.isPlanet === 'Autres') return !value
           },
-          width: '10%',
         },
         {
           text: 'Découvert par',
@@ -118,6 +117,11 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    isMobile() {
+      return this.$vuetify.breakpoint.name === 'xs'
+    },
   },
   methods: {
     rowGoTo(item) {

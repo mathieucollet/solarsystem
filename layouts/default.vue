@@ -1,11 +1,11 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      :v-model="true"
       :mini-variant="miniVariant"
       :clipped="true"
       fixed
       app
+      permanent
     >
       <v-list>
         <v-list-item
@@ -48,8 +48,8 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-earth',
+          title: 'Planètes',
           to: '/',
         },
       ],
