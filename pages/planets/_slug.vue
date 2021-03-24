@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-layout column>
       <v-row>
-        <v-col class="mx-auto" cols="12" sm="6">
+        <v-col class="mx-auto" cols="12" md="8" lg="6">
           <v-card class="mx-auto my-2" width="100%">
             <template slot="progress">
               <v-progress-linear
@@ -15,9 +15,9 @@
             <v-img :lazy-src="preview" width="100%" height="300px" :src="image">
               <template #placeholder>
                 <v-row
-                  class="fill-height ma-0"
+                  class="fill-height ma-0 black"
                   align="center"
-                  justify="center black"
+                  justify="center"
                 >
                   <v-progress-circular
                     indeterminate
@@ -164,19 +164,13 @@ export default {
         message: 'Unable to fetch planets',
       })
     }
-    const imageResponse = await $axios.get(
-      '/api/images/' + this.planet.englishName
-    )
-    this.image = decodeURIComponent(
-      imageResponse.data.data.result.items[0].media_fullsize
-        .split('?u=')[1]
-        .split('&q=')[0]
-    )
-    this.preview = decodeURIComponent(
-      imageResponse.data.data.result.items[0].media_preview
-        .split('?u=')[1]
-        .split('&q=')[0]
-    )
+    await $axios.get('/api/images/' + this.planet.englishName).then((res) => {
+      const imageResponse = res.data.data.result.items[0]
+      this.image = decodeURIComponent(imageResponse.media)
+      this.preview = decodeURIComponent(
+        `https:${imageResponse.media_preview.split('&q=')[0]}`
+      )
+    })
   },
   computed: {
     ...mapState({
@@ -200,10 +194,6 @@ export default {
         this.isFav = true
       }
       this.$cookies.set('favorites', cookieRes)
-    },
-    isFavorite() {
-      const cookieRes = this.$cookies.get('favorites')
-      return cookieRes.ids.includes(this.planet.id)
     },
   },
 }
