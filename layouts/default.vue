@@ -52,21 +52,6 @@ export default {
           title: 'Welcome',
           to: '/',
         },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Démo',
-          to: '/demo',
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Contents',
-          to: '/content',
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Planètes',
-          to: '/planets',
-        },
       ],
       miniVariant: false,
       right: true,
