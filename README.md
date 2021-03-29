@@ -53,7 +53,7 @@ Otherwise locally, just clone the project and make a `yarn` then `yarn dev`
 
 ## API
 - [Solar system](https://api.le-systeme-solaire.net/) : Used to fetch solar system data
-- [Qwant](https://api.qwant.com/api/search/images?count=1&t=images&safesearch=1&uiv=4&r=US&size=large&q=astronomical+planet+) : Used to fetch image related to fetched stolar objects
+- [Qwant API](https://api.qwant.com/) : Used to fetch image related to fetched stolar objects
 
 ## Vuex / store
 To optimize the calls to the solar system API, the data are fetched only once on arrival on the application (or on refresh). The data are stored in a store (🙄). The retrieval of a single entity or favorites is done via this store.
