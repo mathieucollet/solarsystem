@@ -25,8 +25,11 @@
   </a>
 </p>
 
+
 <p align="center">
-[![CI](https://github.com/mathieucollet/solarsystem/actions/workflows/ci.yml/badge.svg)](https://github.com/mathieucollet/solarsystem/actions/workflows/ci.yml)
+  <a href="https://github.com/mathieucollet/solarsystem/actions/workflows/ci.yml" target="_blank">
+    <img src="https://github.com/mathieucollet/solarsystem/actions/workflows/ci.yml/badge.svg" alt="Cypress CI result" />
+  </a>
 </p>
 
 # Solar system
