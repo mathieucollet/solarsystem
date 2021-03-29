@@ -39,7 +39,7 @@ jobs:
         with:
           command: yarn e2e:run
           browser: chrome
-          build: yarn generate
+          build: yarn build
           start: yarn start
           # quote the url to be safe against YML parsing surprises
           wait-on: 'http://localhost:3000'
