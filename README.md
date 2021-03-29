@@ -34,9 +34,9 @@
 
 # Solar system
 
-Ce projet prend place dans le cadre de mes études de développeur Fullstack en master.
+This project takes place in the context of my studies as a Fullstack developer in master.
 
-Le but ici est de récupérer des données depuis une API externe et de mettre ces données en forme.
+The goal here is to retrieve data from an external API and to format this data using the Nuxtjs framework.
 
 ## Run the project
 The project is available online here: bla.
