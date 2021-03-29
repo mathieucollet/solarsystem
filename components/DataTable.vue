@@ -1,5 +1,6 @@
 <template>
   <v-data-table
+    id="data_table"
     :headers="headers"
     :items="data"
     :items-per-page="10"
@@ -120,12 +121,6 @@ export default {
             if (!this.density) return true
             return value >= parseFloat(this.density)
           },
-        },
-        {
-          text: 'Actions',
-          value: 'actions',
-          sortable: false,
-          align: 'end',
         },
       ],
     }

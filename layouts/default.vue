@@ -53,7 +53,7 @@
         </template>
         <NuxtLink
           v-for="item in items"
-          :key="item"
+          :key="item.title"
           :to="item.to"
           class="text-decoration-none"
         >
