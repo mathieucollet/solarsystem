@@ -39,7 +39,7 @@ This project takes place in the context of my studies as a Fullstack developer i
 The goal here is to retrieve data from an external API and to format this data using the Nuxtjs framework.
 
 ## Run the project
-The project is available online here: bla.
+The project is available online here: [solarsystem-blond.vercel.app](https://solarsystem-blond.vercel.app/).
 
 Otherwise locally, just clone the project and make a `yarn` then `yarn dev`
 
