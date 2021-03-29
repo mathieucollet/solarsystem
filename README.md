@@ -57,3 +57,4 @@ Otherwise locally, just clone the project and make a `yarn` then `yarn dev`
 
 ## Vuex / store
 To optimize the calls to the solar system API, the data are fetched only once on arrival on the application (or on refresh). The data are stored in a store (🙄). The retrieval of a single entity or favorites is done via this store.
+
