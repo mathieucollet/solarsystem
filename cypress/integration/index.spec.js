@@ -8,7 +8,7 @@ context('Index', () => {
       cy.get('div.v-toolbar__title').should('be.visible')
       // Assert there is the 10 first objects
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.length', 10)
-      const searchInput = cy.get('#input-43').clear();
+      const searchInput = cy.get('input[type="text"]').first().clear();
       searchInput.type(planet);
       const rows = cy.get('table tbody tr td:first-child:not(:empty)')
       // Assert there is only one row
