@@ -42,3 +42,18 @@ Le but ici est de récupérer des données depuis une API externe et de mettre c
 The project is available online here: bla.
 
 Otherwise locally, just clone the project and make a `yarn` then `yarn dev`
+
+## Packages
+- Vuetify : CSS/Components package to simplify the implementation of a correct style
+- Cypress : End-to-end testing framework to ensure features work as intended
+- Axios : Promise based HTTP client for node.js
+- @nuxtjs/proxy : Used to set path rewrites here
+- v-tooltip : Simple tooltip implementation
+- @nuxtjs/cookie-universal-nuxt : Simplify the use of cookie here to simulate favorites persistence
+
+## API
+- [Solar system](https://api.le-systeme-solaire.net/) : Used to fetch solar system data
+- [Qwant](https://api.qwant.com/api/search/images?count=1&t=images&safesearch=1&uiv=4&r=US&size=large&q=astronomical+planet+) : Used to fetch image related to fetched stolar objects
+
+## Vuex / store
+To optimize the calls to the solar system API, the data are fetched only once on arrival on the application (or on refresh). The data are stored in a store (🙄). The retrieval of a single entity or favorites is done via this store.
