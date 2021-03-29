@@ -34,13 +34,13 @@ context('Index', () => {
 
     it('should have working filters', () => {
       cy.get('.v-data-footer__select > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-input__append-inner > .v-input__icon > .v-icon').click();
-      cy.get('#list-item-87-2 > .v-list-item__content > .v-list-item__title').click();
+      cy.get('.v-menu__content > .v-list > :nth-child(3) > .v-list-item__content > .v-list-item__title').click();
       cy.get(':nth-child(2) > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-select__selections').click();
-      cy.get('#list-item-100-1 > .v-list-item__content > .v-list-item__title').click();
+      cy.get('.v-menu__content:nth-child(3) > .v-list > :nth-child(2) > .v-list-item__content > .v-list-item__title').click();
       // Only planets, should return 13 results
       cy.get(':nth-child(2) > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-select__selections').click();
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.length', 13)
-      cy.get('#list-item-100-0 > .v-list-item__content > .v-list-item__title').click();
+      cy.get('.v-menu__content:nth-child(3) > .v-list > :nth-child(1) > .v-list-item__content > .v-list-item__title').click();
       cy.get('input[type="number"]').first().clear();
       // All object with more than 40 moons, should return 2 results
       cy.get('input[type="number"]').first().type('40');

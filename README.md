@@ -33,3 +33,12 @@
 </p>
 
 # Solar system
+
+Ce projet prend place dans le cadre de mes études de développeur Fullstack en master.
+
+Le but ici est de récupérer des données depuis une API externe et de mettre ces données en forme.
+
+## Run the project
+The project is available online here: bla.
+
+Otherwise locally, just clone the project and make a `yarn` then `yarn dev`
