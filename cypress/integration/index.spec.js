@@ -3,7 +3,7 @@ context('Index', () => {
     cy.visit('/')
   })
   describe('The solar system page', () => {
-    it.only('should be able to find saturn and add it to favorites', () => {
+    it('should be able to find saturn and add it to favorites', () => {
       const planet = 'Saturne'
       cy.get('div.v-toolbar__title').should('be.visible')
       // Assert there is the 10 first objects
@@ -41,20 +41,20 @@ context('Index', () => {
       cy.get(':nth-child(2) > .v-input > .v-input__control > .v-input__slot > .v-select__slot > .v-select__selections').click();
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.length', 13)
       cy.get('#list-item-100-0 > .v-list-item__content > .v-list-item__title').click();
-      cy.get('#input-68').clear();
+      cy.get('input[type="number"]').first().clear();
       // All object with more than 40 moons, should return 2 results
-      cy.get('#input-68').type('40');
+      cy.get('input[type="number"]').first().type('40');
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.length', 2)
-      cy.get('#input-71').clear();
+      cy.get('input[type="number"]').eq(1).clear();
       // All object with more than 40 moons and gravity > 11, should return 1 result
-      cy.get('#input-71').type('11');
+      cy.get('input[type="number"]').eq(1).type('11');
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.length', 1)
-      cy.get('#input-74').clear();
+      cy.get('input[type="number"]').eq(2).clear();
       // All object with more than 40 moons, gravity > 11 and density > 2, should return no result
-      cy.get('#input-74').type('2');
+      cy.get('input[type="number"]').eq(2).type('2');
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.text', 'No matching records found')
-      cy.get('#input-71').clear();
-      cy.get('#input-68').clear();
+      cy.get('input[type="number"]').eq(1).clear();
+      cy.get('input[type="number"]').first().clear();
       // All object gravity > 11, should return 12 result
       cy.get('table tbody tr td:first-child:not(:empty)').should('have.length', 12)
     })
